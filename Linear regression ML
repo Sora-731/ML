@@ -1,0 +1,29 @@
+# Importing required libraries
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Generating some example data (replace this with your data)
+np.random.seed(0)
+X = np.random.rand(100, 1) * 10
+y = 2 * X + 1 + np.random.randn(100, 1) * 2
+
+# Splitting the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Creating and training the Linear Regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Making predictions
+y_pred = model.predict(X_test)
+
+# Plotting the actual data and the regression line
+plt.scatter(X_test, y_test, color='blue', label='Actual Data')
+plt.plot(X_test, y_pred, color='red', linewidth=2, label='Regression Line')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.title('Linear Regression Example')
+plt.legend()
+plt.show()
